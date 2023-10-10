@@ -6,9 +6,16 @@ OMPLIBS = -lgomp
 CFLAGS = -g -std=gnu99 -I. -Wall $(OMPFLAGS)
 LDLIBS = $(OMPLIBS) -lm
 
+# add path to gtmp and gtmpi
+GTMP_PATH = ../omp
+GTMPI_PATH = ../mpi
+# add source for gtmp and gtmpi
+GTMP_SRC:= $(GTMP_PATH)/gtmp1.c #sense reversal
+GTMPI_SRC:= $(GTMPI_PATH)/gtmpi1.c #dessemination barrier
+
 all: combined 
 
-SRCS := $(wildcard *.c)
+SRCS := $(wildcard *.c) $(GTMP_SRC) $(GTMPI_SRC)
 OBJS = $(SRCS:.c=.o)
 
 %.o: %.c
