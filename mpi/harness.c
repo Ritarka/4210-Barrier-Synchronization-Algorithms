@@ -5,7 +5,7 @@
 
 int main(int argc, char **argv)
 {
-  int num_processes, num_rounds = 1;
+  int num_processes, num_rounds = 5;
   int rank;
   printf("Inside the harness\n");
   printf("Harness, argc = %d\n", argc);
