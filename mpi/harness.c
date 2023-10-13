@@ -6,7 +6,7 @@
 
 int main(int argc, char **argv)
 {
-  int num_processes, num_rounds = 100;
+  int num_processes, num_rounds = 50;
   int rank;
   clock_t tic, toc;
   // printf("Inside the harness\n");

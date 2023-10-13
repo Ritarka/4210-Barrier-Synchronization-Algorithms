@@ -10,7 +10,7 @@ LDLIBS = $(OMPLIBS) -lm
 GTMP_PATH = ../omp
 GTMPI_PATH = ../mpi
 # add source for gtmp and gtmpi
-GTMP_SRC:= $(GTMP_PATH)/gtmp1.c #sense reversal
+GTMP_SRC:= $(GTMP_PATH)/gtmp2.c #tournament
 GTMPI_SRC:= $(GTMPI_PATH)/gtmpi1.c #dessemination barrier
 
 all: combined 

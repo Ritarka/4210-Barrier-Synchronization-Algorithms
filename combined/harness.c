@@ -35,7 +35,7 @@ int main(int argc, char **argv)
         tic = clock();
 
 
-    int num_rounds = 100;
+    int num_rounds = 50;
 
 #pragma omp parallel num_threads(num_threads)
     {

@@ -6,7 +6,7 @@
 
 int main(int argc, char** argv)
 {
-  int num_threads, num_iter=100;
+  int num_threads, num_iter=50;
 
   if (argc < 2){
     fprintf(stderr, "Usage: ./harness [NUM_THREADS]\n");
@@ -36,7 +36,7 @@ int main(int argc, char** argv)
 
   printf("%f\n", (double)(toc - tic) / CLOCKS_PER_SEC);
 
-   gtmp_finalize();
+  gtmp_finalize();
 
-   return 0;
+  return 0;
 }
