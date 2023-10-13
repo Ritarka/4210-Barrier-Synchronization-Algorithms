@@ -24,15 +24,15 @@ int main(int argc, char *argv[])
 
     /* Obtain thread number */
     tid = omp_get_thread_num();
-    printf("Hello World from thread = %d on processor %s " \
-           "(rank %d out of %d processors)\n", 
-           tid, processor_name, world_rank, world_size);
+    // printf("Hello World from thread = %d on processor %s " \
+    //        "(rank %d out of %d processors)\n", 
+    //        tid, processor_name, world_rank, world_size);
 
     /* Only master thread does this */
     if (tid == 0)
     {
       nthreads = omp_get_num_threads();
-      printf("Number of threads = %d\n", nthreads);
+      // printf("Number of threads = %d\n", nthreads);
     }
 
   }  /* All threads join master thread and disband */

@@ -20,8 +20,8 @@ int main(int argc, char **argv)
     num_threads = omp_get_num_threads();
     thread_num = omp_get_thread_num();
 
-    printf("Hello World from thread %d:%d of %d procs and %d threads.\n",
-        my_id, thread_num, num_processes, num_threads);
+    // printf("Hello World from thread %d:%d of %d procs and %d threads.\n",
+    //     my_id, thread_num, num_processes, num_threads);
   } // implied barrier
 
   MPI_Finalize();

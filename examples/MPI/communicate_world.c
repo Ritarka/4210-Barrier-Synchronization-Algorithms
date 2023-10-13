@@ -26,7 +26,7 @@ int main(int argc, char **argv)
   MPI_Send(&my_msg, 2, MPI_INT, my_dst, tag, MPI_COMM_WORLD);
   MPI_Recv(&my_msg, 2, MPI_INT, my_src, tag, MPI_COMM_WORLD, &mpi_result);
 
-  printf("proc %d: received message from proc %d of %d\n", my_id, my_msg[0], my_msg[1]);
+  // printf("proc %d: received message from proc %d of %d\n", my_id, my_msg[0], my_msg[1]);
 
   MPI_Finalize();
   return 0;
