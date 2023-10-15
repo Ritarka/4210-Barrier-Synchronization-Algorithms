@@ -7,6 +7,7 @@
 #include <mpi.h>
 #include <omp.h>
 #include <time.h>
+#include <sys/time.h>
 #include "../combined/combined.h" // Adjust the path accordingly
 
 int main(int argc, char **argv)
@@ -17,7 +18,8 @@ int main(int argc, char **argv)
         return EXIT_FAILURE;
     }
 
-    clock_t tic, toc;
+    struct timeval t1, t2;
+    double time;
 
 
     MPI_Init(&argc, &argv);
@@ -32,10 +34,11 @@ int main(int argc, char **argv)
 
 
     if (rank == 0)
-        tic = clock();
+        gettimeofday(&t1, NULL);
 
 
-    int num_rounds = 50;
+
+    int num_rounds = 20;
 
 #pragma omp parallel num_threads(num_threads)
     {
@@ -58,8 +61,12 @@ int main(int argc, char **argv)
     MPI_Finalize();
 
     if (rank == 0) {
-        toc = clock();
-        printf("%f\n", (double)(toc - tic) / CLOCKS_PER_SEC);
+        gettimeofday(&t2, NULL);
+
+        time = (t2.tv_sec - t1.tv_sec) * 1000.0;
+        time += (t2.tv_usec - t1.tv_usec) / 1000.0;
+
+        printf("%lf\n", time);
     }
 
 

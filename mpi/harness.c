@@ -2,13 +2,17 @@
 #include <stdlib.h>
 #include <mpi.h>
 #include <time.h>
+#include <sys/time.h>
 #include "gtmpi.h"
 
 int main(int argc, char **argv)
 {
-  int num_processes, num_rounds = 50;
+  int num_processes, num_rounds = 100;
   int rank;
-  clock_t tic, toc;
+
+  struct timeval t1, t2;
+  double time;
+
   // printf("Inside the harness\n");
   // printf("Harness, argc = %d\n", argc);
 
@@ -29,7 +33,7 @@ int main(int argc, char **argv)
   gtmpi_init(num_processes);
 
   if (rank == 0)
-    tic = clock();
+    gettimeofday(&t1, NULL);
 
   int k;
   for (k = 0; k < num_rounds; k++)
@@ -46,8 +50,12 @@ int main(int argc, char **argv)
   MPI_Finalize();
 
   if (rank == 0) {
-    toc = clock();
-    printf("%f\n", (double)(toc - tic) / CLOCKS_PER_SEC);
+    gettimeofday(&t2, NULL);
+
+    time = (t2.tv_sec - t1.tv_sec) * 1000.0;
+    time += (t2.tv_usec - t1.tv_usec) / 1000.0;
+
+    printf("%lf\n", time);
   }
 
   return 0;
