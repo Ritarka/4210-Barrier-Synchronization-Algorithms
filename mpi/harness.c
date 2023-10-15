@@ -16,8 +16,9 @@ int main(int argc, char **argv)
   // printf("Inside the harness\n");
   // printf("Harness, argc = %d\n", argc);
 
+  int ret;
   
-  MPI_Init(&argc, &argv);
+  MPI_Init_thread(&argc, &argv, MPI_THREAD_FUNNELED, &ret);
   int comm_size;
   MPI_Comm_size(MPI_COMM_WORLD, &comm_size);
   // printf("Inside harness MPI_COMM_WORLD = %d\n", comm_size);
